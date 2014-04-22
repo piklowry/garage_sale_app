@@ -1,0 +1,15 @@
+%h1 The Garage Sale Inventory!
+
+%ul
+	- @garage_items.each do |m|
+		%li= "Title: #{m.title}"
+		%li= "Descr: #{m.description}"
+		%li= "Price: #{m.price}"
+		%li= "Stars: #{m.rating}"
+		%li= "In Stock: #{m.availability}"
+		%a{:href=>"/garage_items/#{m.id}/edit"} Delete
+		%a{:href=>"/garage_items/#{m.id}/edit"} Edit
+		= form_for m, url: "/garage_items/#{m.id}", method: "put" do |f| 
+			=f.hidden_field :availability, :value => "yes"
+			=f.submit "Make Out of Stock"	
+		%br

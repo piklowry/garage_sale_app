@@ -1,0 +1,21 @@
+%h3.center Edit or Delete 
+%h1= @product.title
+%p= @product.description
+%p= @product.price
+%p= @product.rating
+%p= @product.availability
+
+
+
+= form_for @product, url: "/garage_items/#{@product.id}" do |f|
+	= render "form", f: f
+	= f.submit "EDIT"
+
+
+
+= link_to "DELETE",  {:action => "destroy", :id => "#{@product.id}"}, :method => :delete, :class => "icon-delete", :confirm => "Are you sure"
+
+
+
+
+	
